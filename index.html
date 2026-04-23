@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SparkPrime One</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Space+Grotesk:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:        #0e0f0c;
+      --surface:   #161813;
+      --border:    #2a2d24;
+      --text:      #d6d9cc;
+      --muted:     #6b7060;
+      --accent:    #c8e06a;
+      --accent2:   #7ab648;
+      --heading:   #eef2e4;
+      --link:      #c8e06a;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      font-weight: 300;
+      line-height: 1.75;
+      padding: 3rem 1.5rem 6rem;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* ── Header ── */
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 3rem;
+    }
+
+    .brand {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      column-gap: 1.25rem;
+      row-gap: 1rem;
+      align-items: stretch;
+    }
+
+    .brand-photo {
+      grid-column: 1;
+      grid-row: 1;
+      height: 120px;
+      width: auto;
+      object-fit: cover;
+      border-radius: 2px;
+      display: block;
+      align-self: center;
+    }
+
+    .brand-text {
+      grid-column: 2;
+      grid-row: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .tagline {
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .nav {
+      grid-column: 1 / -1;
+      grid-row: 2;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+
+    .nav a {
+      color: var(--link);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+      transition: color 0.15s;
+    }
+
+    .nav a:hover { color: var(--heading); }
+
+    /* ── Sections ── */
+    section {
+      margin-bottom: 3rem;
+    }
+
+    h2 {
+      font-family: 'Fraunces', serif;
+      font-size: 0.75rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    h2::before {
+      content: '#';
+      color: var(--border);
+    }
+
+    h2::after {
+      content: '';
+      display: block;
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    p {
+      font-size: 0.9rem;
+      color: var(--text);
+      margin-bottom: 0.85rem;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    /* ── Services ── */
+    .services {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .service-item {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .service-item:first-child { border-top: 1px solid var(--border); }
+
+    .service-name {
+      font-size: 0.8rem;
+      color: var(--heading);
+      font-weight: 500;
+      padding-top: 0.1rem;
+    }
+
+    .service-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── How I Work ── */
+    .principles {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .principle {
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.85rem;
+      display: flex;
+      gap: 1rem;
+      align-items: baseline;
+    }
+
+    .principle:first-child { border-top: 1px solid var(--border); }
+
+    .principle-marker {
+      color: var(--accent);
+      font-size: 0.7rem;
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+    }
+
+    /* ── Contact ── */
+    .contact-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .contact-list li {
+      font-size: 0.85rem;
+      display: grid;
+      grid-template-columns: 7rem 1fr;
+      gap: 0.5rem;
+    }
+
+    .contact-list .label {
+      color: var(--muted);
+    }
+
+    .contact-list a {
+      color: var(--link);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .contact-list a:hover { color: var(--heading); }
+
+    /* ── Footer ── */
+    footer {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.72rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* ── Subtle accent dot ── */
+    .dot {
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+      vertical-align: middle;
+      margin: 0 0.15em;
+      position: relative;
+      top: -1px;
+    }
+
+    @media (max-width: 500px) {
+      .service-item { grid-template-columns: 1fr; gap: 0.25rem; }
+      .contact-list li { grid-template-columns: 5.5rem 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <img class="brand-photo" src="photo.jpg" alt="Portrait" />
+      <div class="brand-text">
+        <svg width="220" height="90" viewBox="0 0 220 90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="SparkPrime One">
+          <!-- Vertical bars -->
+          <rect x="0" y="0"  width="10" height="44" rx="1.5" fill="#c8e06a"/>
+          <rect x="0" y="52" width="10" height="32" rx="1.5" fill="#c8e06a" opacity="0.55"/>
+          <rect x="0" y="90" width="10" height="20" rx="1.5" fill="#c8e06a" opacity="0.25"/>
+          <!-- Stacked wordmark -->
+          <text x="24" y="40" font-family="'Space Grotesk', sans-serif" font-size="32" font-weight="600" fill="#eef2e4" letter-spacing="-0.5">SparkPrime</text>
+          <text x="24" y="78" font-family="'Space Grotesk', sans-serif" font-size="32" font-weight="300" fill="#c8e06a" letter-spacing="-0.5">One</text>
+        </svg>
+        <div class="tagline">Complex problems, solved right.</div>
+      </div>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#how">How I Work</a>
+        <a href="#contact">Contact</a>
+        <a href="https://github.com/sparkprimeone" target="_blank">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="about">
+    <h2>About</h2>
+    <p>
+      Independent consulting practice specialising in system architecture,
+      software development, and engineering management.
+    </p>
+    <p>
+      I work with startups and mid-size tech companies on the problems that
+      need to be solved properly — infrastructure, process, and the technical
+      decisions that compound over time.
+    </p>
+    <p>
+      Hands-on. Deliberate. Happy to get into the details.
+    </p>
+  </section>
+
+  <section id="services">
+    <h2>Services</h2>
+    <div class="services">
+      <div class="service-item">
+        <div class="service-name">System Architecture</div>
+        <div class="service-desc">Infrastructure design and review, from initial concept through implementation.</div>
+      </div>
+      <div class="service-item">
+        <div class="service-name">Software Development</div>
+        <div class="service-desc">Hands-on development, focused on the parts that are genuinely difficult.</div>
+      </div>
+      <div class="service-item">
+        <div class="service-name">Engineering Management</div>
+        <div class="service-desc">Team building, process design, and mentoring engineers and leads.</div>
+      </div>
+      <div class="service-item">
+        <div class="service-name">Technical Advisory</div>
+        <div class="service-desc">Architecture reviews, technology decisions, and a second opinion on the things that matter.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <h2>How I work</h2>
+    <div class="principles">
+      <div class="principle">
+        <span class="principle-marker">→</span>
+        <span>I focus on <strong style="color:var(--heading)">getting it right</strong>. Deliberate over fast.</span>
+      </div>
+      <div class="principle">
+        <span class="principle-marker">→</span>
+        <span>I work <strong style="color:var(--heading)">hands-on</strong>, in the code and the systems, not just the documents.</span>
+      </div>
+      <div class="principle">
+        <span class="principle-marker">→</span>
+        <span>I look for <strong style="color:var(--heading)">unconventional solutions</strong> when the obvious ones aren't working.</span>
+      </div>
+      <div class="principle">
+        <span class="principle-marker">→</span>
+        <span>I make sure knowledge <strong style="color:var(--heading)">stays with the team</strong> when the engagement ends.</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <ul class="contact-list">
+      <li><span class="label">email</span> <a href="mailto:hello@sparkprime.one">hello@sparkprime.one</a></li>
+      <li><span class="label">github</span> <a href="https://github.com/sparkprimeone" target="_blank">github.com/sparkprimeone</a></li>
+      <li><span class="label">linkedin</span> <a href="https://linkedin.com/in/magiconair" target="_blank">linkedin.com/in/magiconair</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    <span>© 2026 SparkPrime One</span>
+    <span>sparkprime.one</span>
+  </footer>
+
+</body>
+</html>
